@@ -1,0 +1,44 @@
+#version 450
+
+out vec4 FragColour;
+
+in vec3 Colour;
+
+in vec3 WorldPosition;	//We need this for point lights
+in vec3 WorldNormal; 	//We need this for all lighting
+
+uniform vec3 CameraPosition;	//We need this for specular highlights.
+
+uniform vec3 LightPosition;
+
+uniform float AmbientLightLevel;
+
+
+void main()
+{
+	vec3 normal = normalize(WorldNormal);	//May no longer be a unit vector due to interpolation
+	vec3 diffuseColour = Colour;
+	vec3 specularColour = vec3(1, 1, 1);
+	float glossiness = 30;
+	
+	vec3 toLight = LightPosition - WorldPosition;
+	
+	float lightDistance = length(toLight);
+	vec3 lightVec = toLight / lightDistance;
+	
+	float attenuation = 1.0 / lightDistance;	//This is a crappy attenuation formula.
+	
+	float diffuseResult = clamp(dot(lightVec, normal), 0, 1);
+	
+	vec3 cameraVec = normalize(CameraPosition - WorldPosition);
+	vec3 reflectedLight = reflect(-lightVec, normal);
+	
+	float specularResult = pow(clamp(dot(cameraVec, reflectedLight),0,1), glossiness);
+	
+	float specLight = specularResult * attenuation;
+	float diffuseLight = diffuseResult * attenuation + AmbientLightLevel;
+	
+	
+
+	FragColour = vec4(diffuseLight * diffuseColour, 1);
+}

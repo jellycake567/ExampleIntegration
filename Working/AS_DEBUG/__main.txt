@@ -1,0 +1,63 @@
+void main()
+
+Temps: 1, 2
+
+Variables: 
+
+
+- 11,2 -
+    0   2 *    SUSPEND
+    1   2 *    CpyGtoV4 v1, 0x26ab2842f78          (i:2657284796280, f:1.31287e-311)
+    4   2 *    CMPIi    v1, 1
+    6   2 *    JNZ      +8              (d:16)
+- 13,3 -
+            {
+    8   2 *    SUSPEND
+    9   2 *    PGA      0xb2845740          (str:DisplayMainMenu())
+   12   4 *    CALLSYS  84           (void ShowSceneByName(const string&in))
+            }
+   14   2 *    JMP      +36              (d:52)
+- 15,7 -
+            1:
+   16   2 *    SUSPEND
+   17   2 *    CpyGtoV4 v2, 0x26ab2842f78          (i:2657284796280, f:1.31287e-311)
+   20   2 *    CMPIi    v2, 2
+   22   2 *    JNZ      +3              (d:27)
+- 16,2 -
+   24   2 *    SUSPEND
+            {
+            }
+   25   2 *    JMP      +25              (d:52)
+- 19,7 -
+            3:
+   27   2 *    SUSPEND
+   28   2 *    CpyGtoV4 v1, 0x26ab2842f78          (i:2657284796280, f:1.31287e-311)
+   31   2 *    CMPIi    v1, 3
+   33   2 *    JNZ      +3              (d:38)
+- 20,2 -
+   35   2 *    SUSPEND
+            {
+            }
+   36   2 *    JMP      +14              (d:52)
+- 23,7 -
+            5:
+   38   2 *    SUSPEND
+   39   2 *    CpyGtoV4 v2, 0x26ab2842f78          (i:2657284796280, f:1.31287e-311)
+   42   2 *    CMPIi    v2, 4
+   44   2 *    JNZ      +6              (d:52)
+- 39,3 -
+            {
+   46   2 *    SUSPEND
+   47   2 *    CALLSYS  71           (void PauseSystem())
+- 40,3 -
+   49   2 *    SUSPEND
+   50   2 *    CALLSYS  72           (void Quit())
+- 45,2 -
+            }
+            7:
+            6:
+            4:
+            2:
+   52   2 *    SUSPEND
+            0:
+   53   2 *    RET      0

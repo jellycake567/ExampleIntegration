@@ -1,0 +1,20 @@
+void DisplayHPbar()
+
+Temps: 2
+
+Variables: 
+ 001: float health
+
+
+- 20,2 -
+    0   2 *    SUSPEND
+               VarDecl  0
+    1   2 *    SetV4    v1, 0x42c80000          (i:1120403456, f:100)
+- 22,2 -
+    3   2 *    SUSPEND
+    4   2 *    PshV4    v1
+    5   3 *    CALLSYS  70           (void createhealthbar(float))
+- 23,2 -
+    7   2 *    SUSPEND
+            0:
+    8   2 *    RET      0

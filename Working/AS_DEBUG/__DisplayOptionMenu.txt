@@ -1,0 +1,124 @@
+void DisplayOptionMenu()
+
+Temps: 1, 2, 3, 4
+
+Variables: 
+
+
+- 67,2 -
+    0   4 *    SUSPEND
+    1   4 *    PGA      0xec70e390          (str:Options)
+    4   6 *    CALLSYS  71           (void beginwindow(const string&in))
+- 69,2 -
+    6   4 *    SUSPEND
+    7   4 *    PGA      0xec7174b0          (str:TabBar)
+   10   6 *    CALLSYS  78           (bool begintabbar(const string&in))
+   12   4 *    JLowZ    +122              (d:136)
+- 71,3 -
+            {
+   14   4 *    SUSPEND
+   15   4 *    PGA      0xec7170b0          (str:Graphics)
+   18   6 *    CALLSYS  76           (bool begintabitem(const string&in))
+   20   4 *    JLowZ    +77              (d:99)
+- 73,4 -
+            {
+   22   4 *    SUSPEND
+   23   4 *    LDG      0x1f3ec704248          (i:2147155460680, f:1.06084e-311)
+   26   4 *    RDR1     v1
+   27   4 *    PshV4    v1
+   28   5 *    PGA      0xec7177b0          (str:Fullscreen)
+   31   7 *    CALLSYS  75           (bool createcheckbox(const string&in, bool))
+   33   4 *    JLowZ    +10              (d:45)
+- 75,5 -
+            {
+   35   4 *    SUSPEND
+   36   4 *    LDG      0x1f3ec704248          (i:2147155460680, f:1.06084e-311)
+   39   4 *    RDR1     v1
+   40   4 *    NOT      v1
+   41   4 *    LDG      0x1f3ec704248          (i:2147155460680, f:1.06084e-311)
+   44   4 *    WRTV1    v1
+- 78,4 -
+            }
+            3:
+   45   4 *    SUSPEND
+   46   4 *    PGA      0xec7180b0          (str:Resolution)
+   49   6 *    CALLSYS  80           (void displaytext(const string&in))
+- 79,4 -
+   51   4 *    SUSPEND
+   52   4 *    PshG4    0x1f3ec7042f8          (i:2147155460856, f:1.06084e-311)
+   55   5 *    PGA      0xec717a30          (str:width)
+   58   7 *    CALLSYS  81           (int inputint(const string&in, int))
+   60   4 *    CpyRtoV4 v1
+   61   4 *    CpyVtoG4 v1, 0x1f3ec7042f8          (i:2147155460856, f:1.06084e-311)
+- 80,4 -
+   64   4 *    SUSPEND
+   65   4 *    PshG4    0x1f3ec704d18          (i:2147155463448, f:1.06084e-311)
+   68   5 *    PGA      0xec717c30          (str:height)
+   71   7 *    CALLSYS  81           (int inputint(const string&in, int))
+   73   4 *    CpyRtoV4 v1
+   74   4 *    CpyVtoG4 v1, 0x1f3ec704d18          (i:2147155463448, f:1.06084e-311)
+- 81,4 -
+   77   4 *    SUSPEND
+   78   4 *    PGA      0xec7181b0          (str:Frame rate)
+   81   6 *    CALLSYS  80           (void displaytext(const string&in))
+- 82,4 -
+   83   4 *    SUSPEND
+   84   4 *    PshG4    0x1f3ec704f38          (i:2147155463992, f:1.06084e-311)
+   87   5 *    PGA      0xec717e30          (str:)
+   90   7 *    CALLSYS  81           (int inputint(const string&in, int))
+   92   4 *    CpyRtoV4 v1
+   93   4 *    CpyVtoG4 v1, 0x1f3ec704f38          (i:2147155463992, f:1.06084e-311)
+- 83,4 -
+   96   4 *    SUSPEND
+   97   4 *    CALLSYS  77           (void endtabitem())
+- 85,3 -
+            }
+            2:
+   99   4 *    SUSPEND
+  100   4 *    PGA      0xec718db0          (str:Sound)
+  103   6 *    CALLSYS  76           (bool begintabitem(const string&in))
+  105   4 *    JLowZ    +26              (d:133)
+- 87,4 -
+            {
+  107   4 *    SUSPEND
+  108   4 *    PGA      0xec718830          (str:Volume)
+  111   6 *    CALLSYS  80           (void displaytext(const string&in))
+- 88,4 -
+  113   4 *    SUSPEND
+  114   4 *    PshC4    0x42c80000          (i:1120403456, f:100)
+  116   5 *    PshC4    0x0          (i:0, f:0)
+  118   6 *    PshG4    0x1f3ec704028          (i:2147155460136, f:1.06084e-311)
+  121   7 *    PGA      0xec718830          (str:Volume)
+  124   9 *    CALLSYS  74           (float createsliderfloat(const string&in, float, float, float))
+  126   4 *    CpyRtoV4 v4
+  127   4 *    CpyVtoG4 v4, 0x1f3ec704028          (i:2147155460136, f:1.06084e-311)
+- 89,4 -
+  130   4 *    SUSPEND
+  131   4 *    CALLSYS  77           (void endtabitem())
+- 93,3 -
+            }
+            4:
+  133   4 *    SUSPEND
+  134   4 *    CALLSYS  79           (void endtabbar())
+- 99,2 -
+            }
+            1:
+  136   4 *    SUSPEND
+  137   4 *    PGA      0xec718430          (str:Back)
+  140   6 *    PshC4    0x42c80000          (i:1120403456, f:100)
+  142   7 *    PshC4    0x43480000          (i:1128792064, f:200)
+  144   8 *    CALLSYS  73           (bool createbutton(float, float, const string&in))
+  146   4 *    JLowZ    +5              (d:153)
+- 101,3 -
+            {
+  148   4 *    SUSPEND
+  149   4 *    SetG4    2147155461544, 1
+- 106,2 -
+            }
+            5:
+  153   4 *    SUSPEND
+  154   4 *    CALLSYS  72           (void endwindow())
+- 110,2 -
+  156   4 *    SUSPEND
+            0:
+  157   4 *    RET      0

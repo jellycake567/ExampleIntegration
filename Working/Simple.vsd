@@ -1,0 +1,29 @@
+#version 450
+
+layout (location = 0) in vec3 Position;
+layout (location = 1) in vec3 VertColour;
+layout (location = 2) in vec3 VertNormal;
+
+out vec3 Colour;
+out vec3 WorldPosition;	//We need this for point lights
+out vec3 WorldNormal; 	//We need this for all lighting
+
+uniform mat4 mvpMatrix;		//From object space into clip space.
+uniform mat4 modelMatrix;	//From object space into world space.
+
+void main()
+{
+	//Pass vertex colour from the attribute to the rasteriser directly.
+	Colour = VertColour;
+	
+	WorldPosition = (modelMatrix * vec4(Position, 1)).xyz;	//The w component is 1 because this should include translation
+	WorldNormal = (modelMatrix * vec4(VertNormal, 0)).xyz;	//The w component is 0 because we only want to rotate normals, not translate them.*
+	
+
+	//Multiply our newly 3D position by the mvp matrix and send it through.
+	//This has been the most fundamental role of a vertex shader since the dawn of history.
+	gl_Position = mvpMatrix * vec4(Position, 1);
+}
+
+
+//*The actual correct thing to do here is use the inverse of the transpose of the model matrix - that also handles non-uniform scales correctly.
